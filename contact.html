@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Rubex UI</title>
+  <meta name="description" content="Get in touch with Rubex UI to discuss your web development project. Based in Kyiv, Ukraine and working with clients worldwide." />
+  <meta property="og:title" content="Contact Rubex UI" />
+  <meta property="og:description" content="Start a project with Rubex UI — Kyiv's leading web development agency." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rubexui.com/contact.html" />
+  <link rel="canonical" href="https://rubexui.com/contact.html" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>⬡</text></svg>" />
+</head>
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">Rubex UI</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="contact.html">Get Started</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="nav-mobile" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+    <a class="btn btn-primary" href="contact.html">Get Started</a>
+  </nav>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="section-tag reveal" style="justify-content:center;">Get In Touch</div>
+        <h1 class="reveal">Let's Build<br />Something Great</h1>
+        <p class="reveal">Tell us about your project. We'll respond within one business day with our initial thoughts.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Info Column -->
+          <div class="reveal">
+            <h2>Start a conversation</h2>
+            <p style="margin-top:12px; margin-bottom:36px;">Whether you have a fully-formed brief or a rough idea, we're happy to talk. No sales pitch — just an honest conversation about what you're building and how we can help.</p>
+
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="icon" aria-hidden="true">📧</div>
+                <div>
+                  <div class="contact-item-label">Email</div>
+                  <div class="contact-item-value"><a href="mailto:hello@rubexui.com" style="color:var(--text);">hello@rubexui.com</a></div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="icon" aria-hidden="true">📍</div>
+                <div>
+                  <div class="contact-item-label">Location</div>
+                  <div class="contact-item-value">Kyiv, Ukraine</div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="icon" aria-hidden="true">🕐</div>
+                <div>
+                  <div class="contact-item-label">Response Time</div>
+                  <div class="contact-item-value">Within 1 business day</div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="icon" aria-hidden="true">🌍</div>
+                <div>
+                  <div class="contact-item-label">Timezone</div>
+                  <div class="contact-item-value">EET / UTC+2 (UTC+3 in summer)</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:28px;">
+              <p class="footer-heading">Follow Along</p>
+              <div class="social-links" style="margin-top:12px;">
+                <a class="social-link" href="#" aria-label="GitHub">💻</a>
+                <a class="social-link" href="#" aria-label="LinkedIn">in</a>
+                <a class="social-link" href="#" aria-label="Twitter / X">𝕏</a>
+                <a class="social-link" href="#" aria-label="Dribbble">🏀</a>
+                <a class="social-link" href="#" aria-label="Behance">Bē</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Column -->
+          <div class="contact-form-card reveal reveal-delay-2">
+            <div class="form-content">
+              <h3 style="margin-bottom:24px; font-size:1.2rem;">Tell us about your project</h3>
+              <form
+                class="contact-form"
+                action="https://api.web3forms.com/submit"
+                method="POST"
+                novalidate
+              >
+                <!-- Web3Forms access key -->
+                <input type="hidden" name="access_key" value="58fef3c3-68c3-48e3-83b8-05356f09baa4" />
+                <!-- Honeypot spam protection -->
+                <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" aria-hidden="true" />
+                <!-- Redirect back to same page -->
+                <input type="hidden" name="redirect" value="false" />
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="contact-name">Your Name *</label>
+                    <input
+                      class="form-input"
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      placeholder="Alex Smith"
+                      required
+                      autocomplete="name"
+                    />
+                    <div class="form-error" role="alert">Please enter your name.</div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="contact-email">Email Address *</label>
+                    <input
+                      class="form-input"
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      placeholder="alex@company.com"
+                      required
+                      autocomplete="email"
+                    />
+                    <div class="form-error" role="alert">Please enter a valid email.</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contact-company">Company / Organisation</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="contact-company"
+                    name="company"
+                    placeholder="Acme Inc."
+                    autocomplete="organization"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contact-service">Service You're Interested In</label>
+                  <select class="form-input" id="contact-service" name="service" style="cursor:pointer;">
+                    <option value="" disabled selected>Select a service…</option>
+                    <option value="Website Development">Website Development</option>
+                    <option value="Web Application">Web Application</option>
+                    <option value="UI/UX Design">UI/UX Design</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="API Integration">API Integration</option>
+                    <option value="Maintenance & Support">Maintenance &amp; Support</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contact-budget">Estimated Budget</label>
+                  <select class="form-input" id="contact-budget" name="budget" style="cursor:pointer;">
+                    <option value="" disabled selected>Select a range…</option>
+                    <option value="Under $3,000">Under $3,000</option>
+                    <option value="$3,000 – $8,000">$3,000 – $8,000</option>
+                    <option value="$8,000 – $20,000">$8,000 – $20,000</option>
+                    <option value="$20,000+">$20,000+</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contact-message">Tell Us About Your Project *</label>
+                  <textarea
+                    class="form-textarea"
+                    id="contact-message"
+                    name="message"
+                    placeholder="What are you building? What problem does it solve? Any key requirements or constraints we should know about?"
+                    required
+                  ></textarea>
+                  <div class="form-error" role="alert">Please tell us a little about your project.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit">
+                  Send Message
+                </button>
+
+              </form>
+            </div>
+
+            <!-- Success state -->
+            <div class="form-message" role="status" aria-live="polite">
+              <div class="form-message-icon" aria-hidden="true">✅</div>
+              <h3>Message sent!</h3>
+              <p>Thanks for reaching out. We'll be in touch within one business day.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" style="background:var(--bg-surface);">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <div class="section-tag">Common Questions</div>
+          <h2>Before you write</h2>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; max-width:960px; margin:0 auto;">
+          <div class="why-card reveal reveal-delay-1">
+            <h4>How long does a project take?</h4>
+            <p style="margin-top:8px; font-size:0.88rem;">Most marketing sites take 4–8 weeks. Web applications vary — typically 2–5 months depending on scope.</p>
+          </div>
+          <div class="why-card reveal reveal-delay-2">
+            <h4>Do you work with startups?</h4>
+            <p style="margin-top:8px; font-size:0.88rem;">Yes. Some of our best work has been for early-stage companies who needed to move fast and build right the first time.</p>
+          </div>
+          <div class="why-card reveal reveal-delay-3">
+            <h4>What if I only have an idea?</h4>
+            <p style="margin-top:8px; font-size:0.88rem;">That's a fine place to start. We run paid discovery workshops to help you define scope, tech stack, and budget before committing.</p>
+          </div>
+          <div class="why-card reveal reveal-delay-1">
+            <h4>How do payments work?</h4>
+            <p style="margin-top:8px; font-size:0.88rem;">We typically work on a 50% upfront / 50% on delivery model, or milestone-based for larger projects.</p>
+          </div>
+          <div class="why-card reveal reveal-delay-2">
+            <h4>Do you provide ongoing support?</h4>
+            <p style="margin-top:8px; font-size:0.88rem;">Yes. Monthly maintenance plans are available from $500/month and include updates, monitoring, and a support allowance.</p>
+          </div>
+          <div class="why-card reveal reveal-delay-3">
+            <h4>What timezone do you work in?</h4>
+            <p style="margin-top:8px; font-size:0.88rem;">We're based in Kyiv (EET / UTC+2). We overlap comfortably with EU hours and can accommodate US East Coast mornings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo">Rubex UI</span>
+          <p>Premium web development agency based in Kyiv, Ukraine. Building the web's next generation.</p>
+          <div class="social-links">
+            <a class="social-link" href="#" aria-label="GitHub">💻</a>
+            <a class="social-link" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-link" href="#" aria-label="Twitter">𝕏</a>
+            <a class="social-link" href="#" aria-label="Dribbble">🏀</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-heading">Company</p>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Services</p>
+          <ul class="footer-links">
+            <li><a href="services.html">Web Development</a></li>
+            <li><a href="services.html">UI/UX Design</a></li>
+            <li><a href="services.html">E-commerce</a></li>
+            <li><a href="services.html">Web Apps</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Contact</p>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@rubexui.com">hello@rubexui.com</a></li>
+            <li><a href="#">Kyiv, Ukraine</a></li>
+            <li><a href="contact.html">Start a project</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Rubex UI. All rights reserved.</p>
+        <p style="font-size:0.85rem; color:var(--text-dim);">Made with precision in Kyiv 🇺🇦</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
