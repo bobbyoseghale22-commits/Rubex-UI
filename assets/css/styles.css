@@ -431,7 +431,9 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   margin-bottom: 20px;
   font-size: 1.3rem;
+  flex-shrink: 0;
 }
+.service-icon svg { width: 22px; height: 22px; }
 
 .service-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
 .service-card p { font-size: 0.9rem; color: var(--text-muted); }
@@ -459,9 +461,12 @@ img { max-width: 100%; display: block; }
 }
 
 .why-icon {
-  font-size: 1.5rem;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
   margin-bottom: 12px;
+  color: var(--accent);
 }
+.why-icon svg { width: 28px; height: 28px; }
 .why-card h4 { margin-bottom: 6px; }
 .why-card p { font-size: 0.88rem; }
 
@@ -600,7 +605,8 @@ img { max-width: 100%; display: block; }
   border-color: var(--border-hover);
   transform: translateY(-2px);
 }
-.value-card .icon { font-size: 2rem; margin-bottom: 16px; }
+.value-card .icon { width: 44px; height: 44px; display:flex; align-items:center; justify-content:center; margin-bottom: 16px; color: var(--accent); }
+.value-card .icon svg { width: 32px; height: 32px; }
 .value-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
 .value-card p { font-size: 0.9rem; }
 
@@ -669,7 +675,8 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
-.kyiv-fact .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.kyiv-fact .icon { width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+.kyiv-fact .icon svg { width: 22px; height: 22px; }
 
 /* ============================================================
    SERVICES PAGE
@@ -699,10 +706,11 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   min-height: 280px;
-  font-size: 4rem;
   position: relative;
   overflow: hidden;
+  color: var(--accent);
 }
+.service-detail-visual svg { width: 96px; height: 96px; opacity: 0.7; position: relative; z-index: 1; }
 .service-detail-visual::before {
   content: '';
   position: absolute;
@@ -811,10 +819,10 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
   position: relative;
   overflow: hidden;
 }
+.portfolio-image svg { width: 64px; height: 64px; opacity: 0.6; position: relative; z-index: 1; }
 .portfolio-image::before {
   content: '';
   position: absolute;
@@ -871,7 +879,8 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
-.contact-item .icon { font-size: 1.2rem; flex-shrink: 0; }
+.contact-item .icon { width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink: 0; color: var(--accent); }
+.contact-item .icon svg { width: 20px; height: 20px; }
 .contact-item-label { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 2px; }
 .contact-item-value { font-size: 0.95rem; font-weight: 500; }
 
@@ -888,9 +897,12 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
   transition: all var(--transition);
+  color: var(--text-muted);
 }
+.social-link svg { width: 18px; height: 18px; }
 .social-link:hover {
   border-color: var(--accent);
   color: var(--accent);
