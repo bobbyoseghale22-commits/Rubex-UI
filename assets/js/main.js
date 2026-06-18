@@ -16,10 +16,12 @@
   updateNav();
 
   /* ── Active nav link ── */
-  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  const pageName = location.pathname.split('/').pop(); // '' on root, 'about.html' etc.
+  const isHome = pageName === '' || pageName === 'index.html';
   document.querySelectorAll('.nav-links a, .nav-mobile a').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    const linkIsHome = href === './' || href === '/' || href === 'index.html';
+    if ((isHome && linkIsHome) || (!isHome && href === pageName)) {
       link.classList.add('active');
     }
   });
