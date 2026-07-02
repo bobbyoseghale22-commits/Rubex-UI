@@ -135,4 +135,4 @@ Always include `loading="lazy"`, `width`, and `height` for best performance.
 
 ## License
 
-© 2026 Rubex UI. All rights reserved.
+ 2026 Rubex UI. All rights reserved.
