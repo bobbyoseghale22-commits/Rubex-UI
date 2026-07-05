@@ -245,7 +245,6 @@
           const maxDist = 120;
           const alpha = dist < maxDist ? 0.04 + 0.2 * (1 - dist / maxDist) : 0.04;
           const size  = dist < maxDist ? 1.2 + 1.4 * (1 - dist / maxDist) : 1.2;
-          bgCtx && (bgCtx.globalCompositeOperation = 'source-over');
           ctx.beginPath();
           ctx.arc(x, y, size, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(74,158,255,${alpha})`;
@@ -358,6 +357,86 @@
         submitBtn.disabled = false;
         alert('Something went wrong. Please try again or email us directly.');
       }
+    });
+  }
+
+})();
+
+/* ============================================================
+   HOMEPAGE REDESIGN — rotator, count-up, spotlight
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Hero rotating headline word ── */
+  const rotateWord = document.getElementById('rotateWord');
+  if (rotateWord && !reducedMotion) {
+    const words = [
+      'SaaS Platforms',
+      'Micro SaaS Products',
+      'Developer Tools',
+      'AI & Chatbot Platforms',
+      'B2B Service Sites',
+      'Cybersecurity Platforms'
+    ];
+    let idx = 0;
+    setInterval(() => {
+      rotateWord.classList.add('out');
+      setTimeout(() => {
+        idx = (idx + 1) % words.length;
+        rotateWord.textContent = words[idx];
+        rotateWord.classList.remove('out');
+      }, 350);
+    }, 3000);
+  }
+
+  /* ── Count-up hero stats ── */
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length) {
+    const runCounter = (el) => {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      if (reducedMotion || !('requestAnimationFrame' in window)) {
+        el.textContent = target + suffix;
+        return;
+      }
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+        el.textContent = Math.round(target * eased) + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const counterIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            runCounter(e.target);
+            counterIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(el => counterIO.observe(el));
+    } else {
+      counters.forEach(runCounter);
+    }
+  }
+
+  /* ── Mouse-tracking spotlight on bento cards ── */
+  const spotlights = document.querySelectorAll('.spotlight');
+  if (spotlights.length && matchMedia('(hover: hover)').matches) {
+    spotlights.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      });
     });
   }
 
