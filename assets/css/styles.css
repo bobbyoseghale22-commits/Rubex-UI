@@ -1876,3 +1876,193 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 
 /* Bento tilt: quicker transform response for smooth mouse tracking */
 .bento-card { will-change: transform; }
+
+/* ============================================================
+   CREATIVE COLOR SYSTEM — multi-color pop across the page
+   ============================================================ */
+
+:root {
+  --pink:   #FF5CA8;
+  --cyan:   #2FD4E6;
+  --violet: #7C6BFF;
+  --amber:  #FFB84D;
+  --green:  #4ADE80;
+  --gradient-hot: linear-gradient(90deg, #4A9EFF 0%, #7C6BFF 35%, #FF5CA8 70%, #FFB84D 100%);
+}
+
+/* Brand logo picks up the full creative gradient (nav + footer) */
+.nav-logo {
+  background: var(--gradient-hot);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Primary buttons: slow-flowing multi-color gradient */
+.btn-primary {
+  background: linear-gradient(90deg, #4A9EFF, #7C6BFF, #FF5CA8, #7C6BFF, #4A9EFF);
+  background-size: 300% 100%;
+  animation: gradient-flow 8s linear infinite;
+}
+@keyframes gradient-flow {
+  to { background-position: 300% 0; }
+}
+
+/* Hero rotating word: animated multi-color gradient text */
+.rotate-word {
+  background: linear-gradient(90deg, #4A9EFF, #7C6BFF, #FF5CA8, #FFB84D, #2FD4E6, #4A9EFF);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradient-flow 7s linear infinite;
+}
+
+/* Hero aurora: two extra colorful glows + slow hue drift on all */
+.hero-glow-3 {
+  position: absolute;
+  top: 52%;
+  left: -8%;
+  width: 480px;
+  height: 320px;
+  background: radial-gradient(ellipse, rgba(255,92,168,0.14) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-glow-4 {
+  position: absolute;
+  top: 8%;
+  right: 14%;
+  width: 400px;
+  height: 280px;
+  background: radial-gradient(ellipse, rgba(47,212,230,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-glow   { animation: hue-drift 14s ease-in-out infinite alternate; }
+.hero-glow-2 { animation: hue-drift 18s ease-in-out infinite alternate-reverse; }
+.hero-glow-3 { animation: hue-drift 16s ease-in-out infinite alternate; }
+.hero-glow-4 { animation: hue-drift 12s ease-in-out infinite alternate-reverse; }
+@keyframes hue-drift {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(60deg); }
+}
+
+/* Floating chips: each discipline gets its own color */
+.hero-float-2 svg { color: var(--pink); }
+.hero-float-2 { border-color: rgba(255,92,168,0.3); }
+.hero-float-3 svg { color: var(--cyan); }
+.hero-float-3 { border-color: rgba(47,212,230,0.3); }
+.hero-float-4 svg { color: var(--green); }
+.hero-float-4 { border-color: rgba(74,222,128,0.3); }
+
+/* Hero stats: one gradient per stat */
+.hero-stat:nth-child(1) strong { background: linear-gradient(135deg, #4A9EFF, #7C6BFF); -webkit-background-clip: text; background-clip: text; }
+.hero-stat:nth-child(2) strong { background: linear-gradient(135deg, #FF5CA8, #FF8A5C); -webkit-background-clip: text; background-clip: text; }
+.hero-stat:nth-child(3) strong { background: linear-gradient(135deg, #2FD4E6, #4A9EFF); -webkit-background-clip: text; background-clip: text; }
+.hero-stat:nth-child(4) strong { background: linear-gradient(135deg, #FFB84D, #FF5CA8); -webkit-background-clip: text; background-clip: text; }
+
+/* Section tag color variants */
+.section-tag.tag-pink   { color: var(--pink);   background: rgba(255,92,168,0.1);  border-color: rgba(255,92,168,0.22); }
+.section-tag.tag-cyan   { color: var(--cyan);   background: rgba(47,212,230,0.1);  border-color: rgba(47,212,230,0.22); }
+.section-tag.tag-amber  { color: var(--amber);  background: rgba(255,184,77,0.1);  border-color: rgba(255,184,77,0.22); }
+.section-tag.tag-violet { color: var(--violet); background: rgba(124,107,255,0.12); border-color: rgba(124,107,255,0.25); }
+
+/* Marquee: hover colors cycle through the palette */
+.marquee-item:nth-child(4n+2):hover { color: var(--pink); }
+.marquee-item:nth-child(4n+3):hover { color: var(--cyan); }
+.marquee-item:nth-child(4n):hover   { color: var(--amber); }
+
+/* ── Bento accent system ── */
+.bento-card {
+  --ac:        var(--accent);
+  --ac-soft:   rgba(74,158,255,0.09);
+  --ac-border: rgba(74,158,255,0.35);
+}
+.accent-pink   { --ac: var(--pink);   --ac-soft: rgba(255,92,168,0.09);  --ac-border: rgba(255,92,168,0.4); }
+.accent-cyan   { --ac: var(--cyan);   --ac-soft: rgba(47,212,230,0.09);  --ac-border: rgba(47,212,230,0.4); }
+.accent-violet { --ac: var(--violet); --ac-soft: rgba(124,107,255,0.11); --ac-border: rgba(124,107,255,0.45); }
+.accent-green  { --ac: var(--green);  --ac-soft: rgba(74,222,128,0.09);  --ac-border: rgba(74,222,128,0.4); }
+.accent-amber  { --ac: var(--amber);  --ac-soft: rgba(255,184,77,0.09);  --ac-border: rgba(255,184,77,0.4); }
+
+.bento-card:hover { border-color: var(--ac-border); }
+.spotlight::before {
+  background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), var(--ac-soft), transparent 45%);
+}
+.bento-tags span {
+  background: var(--ac-soft);
+  border-color: var(--ac-border);
+  color: var(--ac);
+}
+
+/* Gradient hairline sweeps in along the top on hover */
+.bento-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ac), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.bento-card:hover::after { opacity: 1; }
+
+/* Recolor the card visuals to match their accents */
+.accent-pink .micro-pulse { color: var(--pink); }
+.accent-pink .micro-pulse > span { border-color: rgba(255,92,168,0.45); }
+
+.accent-cyan .code-caret { background: var(--cyan); }
+.accent-cyan .code-line { background: rgba(47,212,230,0.35); }
+.accent-cyan .code-line[style*="--c:2"] { background: rgba(124,107,255,0.4); }
+.accent-cyan .code-line[style*="--c:3"] { background: rgba(255,92,168,0.35); }
+
+.accent-violet .ai-bubble-user { background: linear-gradient(135deg, var(--violet), var(--pink)); }
+
+.accent-green .cyber-radar { color: var(--green); }
+.accent-green .radar-ring { border-color: rgba(74,222,128,0.3); }
+.accent-green .radar-sweep { background: conic-gradient(from 0deg, rgba(74,222,128,0.4), transparent 70deg); }
+
+.accent-amber .pipe-node { border-color: var(--amber); }
+.accent-amber .pipe-node-end { background: var(--amber); box-shadow: 0 0 16px rgba(255,184,77,0.45); }
+.accent-amber .pipe-flow { background: var(--amber); box-shadow: 0 0 10px rgba(255,184,77,0.55); }
+
+/* ── Why cards: colorful icons ── */
+.why-card:nth-child(2) .why-icon { color: var(--pink); }
+.why-card:nth-child(3) .why-icon { color: var(--cyan); }
+.why-card:nth-child(4) .why-icon { color: var(--violet); }
+.why-card:nth-child(5) .why-icon { color: var(--green); }
+.why-card:nth-child(6) .why-icon { color: var(--amber); }
+
+/* ── Process steps: each number its own color ── */
+.process-step:nth-child(2) .step-num { color: var(--pink); }
+.process-step:nth-child(2):hover .step-num { background: var(--pink); border-color: var(--pink); color: #fff; box-shadow: 0 0 24px rgba(255,92,168,0.35); }
+.process-step:nth-child(3) .step-num { color: var(--cyan); }
+.process-step:nth-child(3):hover .step-num { background: var(--cyan); border-color: var(--cyan); color: #0A0C0F; box-shadow: 0 0 24px rgba(47,212,230,0.35); }
+.process-step:nth-child(4) .step-num { color: var(--amber); }
+.process-step:nth-child(4):hover .step-num { background: var(--amber); border-color: var(--amber); color: #0A0C0F; box-shadow: 0 0 24px rgba(255,184,77,0.35); }
+
+/* ── CTA: richer multi-color border + tinted card ── */
+.cta-card {
+  background: linear-gradient(135deg, rgba(74,158,255,0.08) 0%, rgba(124,107,255,0.07) 45%, rgba(255,92,168,0.07) 100%);
+}
+.cta-glow::after {
+  background: conic-gradient(from var(--cta-angle),
+    transparent 0%,
+    rgba(74,158,255,0.9) 10%,
+    rgba(255,92,168,0.9) 20%,
+    rgba(255,184,77,0.9) 28%,
+    transparent 40%);
+}
+
+/* Cursor glow: subtle two-tone tint */
+.cursor-glow {
+  background: radial-gradient(circle, rgba(124,107,255,0.06) 0%, rgba(255,92,168,0.03) 35%, transparent 60%);
+}
+
+/* Reduced motion: freeze the new gradient/hue animation */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .rotate-word,
+  .hero-glow, .hero-glow-2, .hero-glow-3, .hero-glow-4 {
+    animation: none !important;
+  }
+}
