@@ -477,9 +477,9 @@
     })();
   }
 
-  /* ── 3D tilt on bento cards ── */
+  /* ── 3D tilt on bento cards + any .tilt card ── */
   if (canHover && !reducedMotion) {
-    document.querySelectorAll('.bento-card').forEach(card => {
+    document.querySelectorAll('.bento-card, .tilt').forEach(card => {
       card.addEventListener('mousemove', e => {
         const r = card.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - 0.5;

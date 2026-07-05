@@ -14,6 +14,9 @@
 </head>
 <body>
 
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a class="nav-logo" href="./">Rubex UI</a>
@@ -46,7 +49,7 @@
 
     <section class="page-hero">
       <div class="container">
-        <div class="section-tag reveal" style="justify-content:center;">Get In Touch</div>
+        <div class="section-tag tag-pink reveal" style="justify-content:center;">Get In Touch</div>
         <h1 class="reveal">Let's Build<br />Something Great</h1>
         <p class="reveal">Tell us about your project. We'll respond within one business day with our initial thoughts.</p>
       </div>
@@ -115,7 +118,7 @@
           <!-- Form Column -->
           <!-- NOTE: .form-content and .form-message are siblings OUTSIDE the <form>,
                both inside .contact-form-card. The JS targets them from the card, not from inside the form. -->
-          <div class="contact-form-card reveal reveal-delay-2">
+          <div class="contact-form-card spotlight reveal reveal-delay-2">
             <div class="form-content">
               <h3 style="margin-bottom:24px; font-size:1.2rem;">Tell us about your project</h3>
               <form class="contact-form" novalidate>
@@ -196,7 +199,7 @@
     <section class="section" style="background:var(--bg-surface);">
       <div class="container">
         <div class="section-header centered reveal">
-          <div class="section-tag">Common Questions</div>
+          <div class="section-tag tag-cyan">Common Questions</div>
           <h2>Before you write</h2>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; max-width:960px; margin:0 auto;">

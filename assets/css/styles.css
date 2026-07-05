@@ -2066,3 +2066,94 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
     animation: none !important;
   }
 }
+
+/* ============================================================
+   SITE-WIDE CREATIVE ROLLOUT — inner pages
+   ============================================================ */
+
+/* Green section tag (completes the set) */
+.section-tag.tag-green { color: var(--green); background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.22); }
+
+/* Spotlight works on any card, not just bento */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+  --ac:        var(--accent);
+  --ac-soft:   rgba(74,158,255,0.09);
+  --ac-border: rgba(74,158,255,0.35);
+}
+
+/* Inner page heroes: aurora treatment */
+.page-hero::before { animation: hue-drift 14s ease-in-out infinite alternate; }
+.page-hero::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  width: 420px;
+  height: 260px;
+  background: radial-gradient(ellipse, rgba(255,92,168,0.1) 0%, transparent 70%);
+  pointer-events: none;
+  animation: hue-drift 18s ease-in-out infinite alternate-reverse;
+}
+
+/* About: value card icons cycle the palette */
+.value-card:nth-child(2) .icon { color: var(--pink); }
+.value-card:nth-child(3) .icon { color: var(--cyan); }
+.value-card:nth-child(4) .icon { color: var(--violet); }
+.value-card:nth-child(5) .icon { color: var(--green); }
+.value-card:nth-child(6) .icon { color: var(--amber); }
+
+/* About: team avatars + role labels get individual gradients */
+.team-card:nth-child(2) .team-avatar { background: linear-gradient(135deg, var(--pink), var(--amber)); }
+.team-card:nth-child(2) span { color: var(--pink); }
+.team-card:nth-child(3) .team-avatar { background: linear-gradient(135deg, var(--cyan), var(--accent)); }
+.team-card:nth-child(3) span { color: var(--cyan); }
+.team-card:nth-child(4) .team-avatar { background: linear-gradient(135deg, var(--amber), var(--pink)); }
+.team-card:nth-child(4) span { color: var(--amber); }
+
+/* About: Kyiv fact icons */
+.kyiv-fact:nth-child(2) .icon { color: var(--pink); }
+.kyiv-fact:nth-child(3) .icon { color: var(--cyan); }
+
+/* Services: each service block owns a color (checkmarks + price) */
+.service-detail:nth-child(2) .service-feature::before,
+.service-detail:nth-child(2) .pricing-price { color: var(--pink); }
+.service-detail:nth-child(3) .service-feature::before,
+.service-detail:nth-child(3) .pricing-price { color: var(--cyan); }
+.service-detail:nth-child(4) .service-feature::before,
+.service-detail:nth-child(4) .pricing-price { color: var(--violet); }
+.service-detail:nth-child(5) .service-feature::before,
+.service-detail:nth-child(5) .pricing-price { color: var(--amber); }
+.service-detail:nth-child(6) .service-feature::before,
+.service-detail:nth-child(6) .pricing-price { color: var(--green); }
+
+/* Portfolio: tech tags cycle colors */
+.tech-tags .tech-tag:nth-child(3n+2) {
+  background: rgba(255,92,168,0.08);
+  border-color: rgba(255,92,168,0.18);
+  color: var(--pink);
+}
+.tech-tags .tech-tag:nth-child(3n) {
+  background: rgba(47,212,230,0.08);
+  border-color: rgba(47,212,230,0.18);
+  color: var(--cyan);
+}
+
+/* Portfolio: filter buttons tint on hover */
+.filter-btn:nth-child(2):hover { border-color: rgba(255,92,168,0.5); color: var(--pink); }
+.filter-btn:nth-child(3):hover { border-color: rgba(47,212,230,0.5); color: var(--cyan); }
+.filter-btn:nth-child(4):hover { border-color: rgba(255,184,77,0.5); color: var(--amber); }
+
+/* Contact: item icons + social hovers cycle */
+.contact-item:nth-child(2) .icon { color: var(--pink); }
+.contact-item:nth-child(3) .icon { color: var(--cyan); }
+.contact-item:nth-child(4) .icon { color: var(--amber); }
+.social-link:nth-child(2):hover { border-color: var(--cyan); color: var(--cyan); }
+.social-link:nth-child(3):hover { border-color: var(--pink); color: var(--pink); }
+.social-link:nth-child(4):hover { border-color: var(--amber); color: var(--amber); }
+
+/* Reduced motion: freeze inner-page aurora */
+@media (prefers-reduced-motion: reduce) {
+  .page-hero::before, .page-hero::after { animation: none !important; }
+}
