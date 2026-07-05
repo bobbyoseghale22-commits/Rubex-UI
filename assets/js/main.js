@@ -374,12 +374,11 @@
   const rotateWord = document.getElementById('rotateWord');
   if (rotateWord && !reducedMotion) {
     const words = [
-      'SaaS Platforms',
-      'Micro SaaS Products',
-      'Developer Tools',
-      'AI & Chatbot Platforms',
-      'B2B Service Sites',
-      'Cybersecurity Platforms'
+      'Websites',
+      'Web Applications',
+      'E-commerce Stores',
+      'Landing Pages',
+      'Digital Experiences'
     ];
     let idx = 0;
     setInterval(() => {
@@ -438,6 +437,89 @@
         card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
       });
     });
+  }
+
+})();
+
+/* ============================================================
+   REACTIVE LAYER — scroll progress, cursor glow, tilt, magnetic
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canHover = window.matchMedia('(hover: hover)').matches;
+
+  /* ── Scroll progress bar ── */
+  const progress = document.querySelector('.scroll-progress');
+  if (progress) {
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      progress.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  /* ── Cursor-following glow ── */
+  const glow = document.querySelector('.cursor-glow');
+  if (glow && canHover && !reducedMotion) {
+    let tx = window.innerWidth / 2, ty = window.innerHeight / 3;
+    let x = tx, y = ty;
+    window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+    (function follow() {
+      x += (tx - x) * 0.08;
+      y += (ty - y) * 0.08;
+      glow.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+      requestAnimationFrame(follow);
+    })();
+  }
+
+  /* ── 3D tilt on bento cards ── */
+  if (canHover && !reducedMotion) {
+    document.querySelectorAll('.bento-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform =
+          'perspective(900px) rotateX(' + (-py * 4).toFixed(2) + 'deg)' +
+          ' rotateY(' + (px * 5).toFixed(2) + 'deg) translateY(-4px)';
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+  }
+
+  /* ── Magnetic buttons ── */
+  if (canHover && !reducedMotion) {
+    document.querySelectorAll('.btn-magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        btn.style.transform = 'translate(' + (dx * 0.18).toFixed(1) + 'px,' + (dy * 0.3).toFixed(1) + 'px)';
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  /* ── Hero parallax on scroll (chips + glows drift at different speeds) ── */
+  const chips = document.querySelectorAll('.hero-float');
+  const glows = document.querySelectorAll('.hero-glow, .hero-glow-2');
+  if ((chips.length || glows.length) && !reducedMotion && 'translate' in document.documentElement.style) {
+    const parallax = () => {
+      const y = window.scrollY;
+      if (y > window.innerHeight * 1.5) return;
+      chips.forEach((chip, i) => {
+        chip.style.translate = '0 ' + (y * (0.1 + i * 0.05)).toFixed(1) + 'px';
+      });
+      glows.forEach((g, i) => {
+        g.style.translate = '0 ' + (y * (0.18 + i * 0.08)).toFixed(1) + 'px';
+      });
+    };
+    window.addEventListener('scroll', parallax, { passive: true });
   }
 
 })();
