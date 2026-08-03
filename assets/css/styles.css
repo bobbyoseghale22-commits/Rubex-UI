@@ -10,12 +10,22 @@
 /* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Dark is the default theme. The light theme overrides these tokens in the
+   THEME: LIGHT section at the bottom of this file. Anything colour-related
+   belongs in a token here so both themes stay in sync. */
 :root {
+  color-scheme: dark;
+
   --bg:          #0A0C0F;
+  --bg-rgb:      10, 12, 15;   /* --bg as a triplet, for rgba() overlays */
   --bg-surface:  #111318;
   --bg-card:     #14171F;
+  --bg-card-hover: #181B24;
   --border:      rgba(255,255,255,0.07);
   --border-hover:rgba(255,255,255,0.14);
+  --overlay-soft:   rgba(255,255,255,0.06);
+  --overlay-hover:  rgba(255,255,255,0.05);
+  --overlay-border: rgba(255,255,255,0.2);
   --text:        #E8F0FE;
   --text-muted:  #8892A4;
   --text-dim:    #4A5568;
@@ -23,6 +33,21 @@
   --accent-glow: rgba(74,158,255,0.25);
   --accent-2:    #7C6BFF;
   --gradient:    linear-gradient(135deg, #4A9EFF 0%, #7C6BFF 100%);
+  --heading-gradient: linear-gradient(180deg, #fff 0%, rgba(232,240,254,0.7) 100%);
+  --chip-bg:     rgba(20,23,31,0.75);
+  --shadow-card:  0 8px 32px rgba(0,0,0,0.4);
+  --shadow-float: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lift:  0 16px 48px rgba(0,0,0,0.5);
+  --shadow-bento: 0 20px 48px rgba(0,0,0,0.45);
+
+  /* Read by the hero canvases in main.js; see readPalette(). */
+  --canvas-bg:       #0A0C0F;
+  --canvas-dot:      74,158,255;
+  --canvas-dot-a:    1;
+  --canvas-particle: 100,180,255;
+  --canvas-orb-l:    65;
+  --canvas-orb-a:    1;
+
   --radius:      12px;
   --radius-lg:   20px;
   --font:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -149,8 +174,8 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
   border: 1px solid var(--border-hover);
 }
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.2);
+  background: var(--overlay-hover);
+  border-color: var(--overlay-border);
 }
 
 .btn-lg { padding: 15px 32px; font-size: 1rem; }
@@ -175,7 +200,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 }
 
 .navbar.scrolled {
-  background: rgba(10,12,15,0.88);
+  background: rgba(var(--bg-rgb), 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
@@ -224,7 +249,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 }
 .nav-links a:hover, .nav-links a.active {
   color: var(--text);
-  background: rgba(255,255,255,0.06);
+  background: var(--overlay-soft);
 }
 
 /* Right slot: CTA button pinned to the right */
@@ -248,7 +273,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
   border-radius: 8px;
   transition: background var(--transition);
 }
-.nav-hamburger:hover { background: rgba(255,255,255,0.06); }
+.nav-hamburger:hover { background: var(--overlay-soft); }
 
 .nav-hamburger span {
   display: block;
@@ -269,7 +294,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
   position: fixed;
   top: var(--nav-h);
   left: 0; right: 0;
-  background: rgba(10,12,15,0.97);
+  background: rgba(var(--bg-rgb), 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -293,7 +318,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 }
 .nav-mobile a:hover, .nav-mobile a.active {
   color: var(--text);
-  background: rgba(255,255,255,0.06);
+  background: var(--overlay-soft);
 }
 .nav-mobile .nav-divider {
   height: 1px;
@@ -333,7 +358,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(10,12,15,0.5) 0%, rgba(10,12,15,0.25) 40%, rgba(10,12,15,0.75) 100%);
+  background: linear-gradient(to bottom, rgba(var(--bg-rgb), 0.5) 0%, rgba(var(--bg-rgb), 0.25) 40%, rgba(var(--bg-rgb), 0.75) 100%);
   z-index: 0;
   pointer-events: none;
 }
@@ -406,7 +431,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 
 .hero h1 {
   margin-bottom: 24px;
-  background: linear-gradient(180deg, #fff 0%, rgba(232,240,254,0.7) 100%);
+  background: var(--heading-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -485,7 +510,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
   transition: opacity 0.3s;
 }
 
-.service-card:hover { background: #181B24; }
+.service-card:hover { background: var(--bg-card-hover); }
 .service-card:hover::before { opacity: 0.03; }
 
 .service-icon {
@@ -524,7 +549,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 .why-card:hover {
   border-color: var(--border-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: var(--shadow-card);
 }
 
 .why-icon {
@@ -788,7 +813,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(74,158,255,0.12) 0%, rgba(10,12,15,0.3) 100%);
+  background: linear-gradient(135deg, rgba(74,158,255,0.12) 0%, rgba(var(--bg-rgb), 0.3) 100%);
   pointer-events: none;
 }
 .service-detail-visual::before {
@@ -889,7 +914,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 .portfolio-card:hover {
   border-color: var(--border-hover);
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-lift);
 }
 .portfolio-card.hidden { display: none; }
 
@@ -915,7 +940,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(10,12,15,0.6) 100%);
+  background: linear-gradient(180deg, transparent 50%, rgba(var(--bg-rgb), 0.6) 100%);
   pointer-events: none;
 }
 
@@ -1388,12 +1413,12 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-muted);
-  background: rgba(20,23,31,0.75);
+  background: var(--chip-bg);
   border: 1px solid var(--border-hover);
   border-radius: 100px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  box-shadow: var(--shadow-float);
   pointer-events: none;
 }
 .hero-float svg { width: 16px; height: 16px; color: var(--accent); }
@@ -1496,7 +1521,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 .bento-card:hover {
   border-color: rgba(74,158,255,0.35);
   transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.45);
+  box-shadow: var(--shadow-bento);
 }
 
 /* Mouse-tracking spotlight */
@@ -2162,4 +2187,139 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
 /* Reduced motion: freeze inner-page aurora */
 @media (prefers-reduced-motion: reduce) {
   .page-hero::before, .page-hero::after { animation: none !important; }
+}
+
+/* ============================================================
+   THEME: LIGHT
+   ------------------------------------------------------------
+   Selected via data-theme="light" on <html>, set by the inline
+   script in each page <head> before first paint (no flash) and
+   toggled by .theme-toggle.
+
+   :root[data-theme="light"] is deliberately more specific than
+   the plain :root blocks above, so these win no matter where
+   those blocks appear in the file.
+   ============================================================ */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg:          #FFFFFF;
+  --bg-rgb:      255, 255, 255;
+  --bg-surface:  #F4F7FB;
+  --bg-card:     #FFFFFF;
+  --bg-card-hover: #F1F5FA;
+  --border:      rgba(16,24,40,0.10);
+  --border-hover:rgba(16,24,40,0.22);
+  --overlay-soft:   rgba(16,24,40,0.05);
+  --overlay-hover:  rgba(16,24,40,0.04);
+  --overlay-border: rgba(16,24,40,0.18);
+  --text:        #0E1526;
+  --text-muted:  #55617A;
+  --text-dim:    #8792A6;
+
+  /* Accents are darkened so they still pass contrast as text on white. */
+  --accent:      #1668D6;
+  --accent-glow: rgba(22,104,214,0.18);
+  --accent-2:    #5B46D6;
+  --gradient:    linear-gradient(135deg, #1668D6 0%, #5B46D6 100%);
+  --heading-gradient: linear-gradient(180deg, #0E1526 0%, rgba(14,21,38,0.72) 100%);
+
+  --chip-bg:     rgba(255,255,255,0.82);
+  --shadow-card:  0 6px 24px rgba(16,24,40,0.08);
+  --shadow-float: 0 6px 20px rgba(16,24,40,0.07);
+  --shadow-lift:  0 16px 40px rgba(16,24,40,0.13);
+  --shadow-bento: 0 18px 40px rgba(16,24,40,0.11);
+
+  --canvas-bg:       #F4F7FB;
+  --canvas-dot:      22,104,214;
+  --canvas-dot-a:    1.9;
+  --canvas-particle: 60,130,220;
+  --canvas-orb-l:    52;
+  --canvas-orb-a:    2.2;
+
+  /* Same hues as the dark palette, darkened for light surfaces. */
+  --pink:   #C81E67;
+  --cyan:   #0B7180;
+  --violet: #5B46D6;
+  --amber:  #96600A;
+  --green:  #1B7F45;
+  --gradient-hot: linear-gradient(90deg, #1668D6 0%, #5B46D6 35%, #C81E67 70%, #96600A 100%);
+}
+
+/* Hero stat numbers: darkened gradients so large text clears 3:1 on white.
+   These must use the background-image longhand — the `background` shorthand
+   would reset background-clip and spill the gradient across the whole box. */
+:root[data-theme="light"] .hero-stat:nth-child(1) strong { background-image: linear-gradient(135deg, #1668D6, #5B46D6); }
+:root[data-theme="light"] .hero-stat:nth-child(2) strong { background-image: linear-gradient(135deg, #C81E67, #C2410C); }
+:root[data-theme="light"] .hero-stat:nth-child(3) strong { background-image: linear-gradient(135deg, #0B7180, #1668D6); }
+:root[data-theme="light"] .hero-stat:nth-child(4) strong { background-image: linear-gradient(135deg, #96600A, #C81E67); }
+
+/* Rotating hero word: the dark-theme gradient runs through amber and cyan,
+   which wash out on white. Same motion, darker stops. */
+:root[data-theme="light"] .rotate-word {
+  background-image: linear-gradient(90deg, #1668D6, #5B46D6, #C81E67, #96600A, #0B7180, #1668D6);
+}
+
+/* These chips sit on a dark-enough accent in light mode, so the numeral
+   flips to white rather than the near-black used on the bright dark-theme
+   equivalents. */
+:root[data-theme="light"] .process-step:nth-child(3):hover .step-num,
+:root[data-theme="light"] .process-step:nth-child(4):hover .step-num { color: #fff; }
+
+/* Hero aurora is tuned for a dark canvas; soften it over a light one. */
+:root[data-theme="light"] .hero-glow,
+:root[data-theme="light"] .hero-glow-2,
+:root[data-theme="light"] .hero-glow-3,
+:root[data-theme="light"] .hero-glow-4 { opacity: 0.55; }
+
+/* ── Theme toggle button ── */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.theme-toggle:hover {
+  background: var(--overlay-soft);
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+/* Show the icon for the theme you'd switch *to*. */
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun  { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* Ease the swap between themes without animating every property on the page. */
+body,
+.navbar,
+.nav-mobile,
+.bento-card,
+.why-card,
+.team-card,
+.service-card,
+.portfolio-card {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  body, .navbar, .nav-mobile, .bento-card, .why-card,
+  .team-card, .service-card, .portfolio-card { transition: none; }
 }
