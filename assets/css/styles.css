@@ -2,8 +2,10 @@
    RUBEX UI — Main Stylesheet
    ============================================================ */
 
-/* --- Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* --- Fonts ---
+   Inter is loaded via <link rel="preconnect"> + <link rel="stylesheet"> in each
+   page <head>. Using @import here would chain the request behind this file and
+   delay first paint. */
 
 /* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,6 +61,10 @@ h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; }
 h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 600; }
 h4 { font-size: 1.1rem; font-weight: 600; }
 p  { color: var(--text-muted); line-height: 1.75; }
+
+/* Card headings are h3 so the document outline never skips a level; they keep
+   the compact size the card layouts are built around. */
+.why-card h3, .team-card h3, .kyiv-fact h3 { font-size: 1.1rem; }
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -528,7 +534,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
   color: var(--accent);
 }
 .why-icon svg { width: 28px; height: 28px; }
-.why-card h4 { margin-bottom: 6px; }
+.why-card h3 { margin-bottom: 6px; }
 .why-card p { font-size: 0.88rem; }
 
 /* ============================================================
@@ -702,7 +708,7 @@ input, textarea, select { -webkit-appearance: none; appearance: none; border-rad
   font-weight: 700;
   color: #fff;
 }
-.team-card h4 { margin-bottom: 4px; }
+.team-card h3 { margin-bottom: 4px; }
 .team-card span {
   font-size: 0.85rem;
   color: var(--accent);
