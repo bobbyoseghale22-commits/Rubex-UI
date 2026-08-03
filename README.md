@@ -74,7 +74,7 @@ git push -u origin main
 ### Option 3 — Custom Domain
 
 1. Follow Option 1 or 2 to deploy
-2. In **Settings → Pages → Custom Domain**, enter your domain (e.g. `rubexui.com`)
+2. In **Settings → Pages → Custom Domain**, enter your domain (e.g. `rubexs.com`)
 3. Update your domain's DNS:
    - Add 4 A records pointing to GitHub's IPs:
      ```
@@ -88,7 +88,7 @@ git push -u origin main
 
 ### After Deployment
 
-- Update `sitemap.xml`: replace `https://rubexui.com/` with your actual domain
+- Update `sitemap.xml`: replace `https://rubexs.com/` with your actual domain
 - Update Open Graph `og:url` meta tags in each HTML file
 - Update the `robots.txt` Sitemap URL to match your domain
 
