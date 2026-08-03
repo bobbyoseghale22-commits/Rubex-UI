@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rubexui.com/sitemap.xml
+Sitemap: https://rubexs.com/sitemap.xml
